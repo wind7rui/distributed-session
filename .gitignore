@@ -13,3 +13,6 @@ build.xml
 *.log
 *.log.1
 gradle
+gradle
+gradlew.bat
+gradlew
