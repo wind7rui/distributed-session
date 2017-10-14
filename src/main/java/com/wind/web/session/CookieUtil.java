@@ -6,9 +6,14 @@ import javax.servlet.http.Cookie;
 import java.util.UUID;
 
 public class CookieUtil {
+    private static final String SESSION_ID_IN_REQUEST = "JSESIONID_IN_REQUEST";
 
     public static String getCurrentSessionId(HttpContext httpContext) {
-        //TODO 浏览器禁止cookie的情况没考虑，需要优化
+        //浏览器禁止cookie的情况下，将sessionid写入请求中，服务端从请求中获取
+        String sessionId = (String) httpContext.getRequest().getAttribute(SESSION_ID_IN_REQUEST);
+        if (StringUtils.isNotBlank(sessionId)) {
+            return sessionId;
+        }
 
         Cookie cookies[] = httpContext.getRequest().getCookies();
         if (cookies != null && cookies.length != 0) {
