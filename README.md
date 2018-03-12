@@ -6,8 +6,8 @@
 
 - 兼容浏览器禁止cookie的情况，从请求中获取
 
-# 使用
-在Spring的xml配置文件中加入：
+# 本地启动
+应用启动前，需要在本地启动两个redis实例或修改
 
     <bean id="cookieConfig" class="com.wind.web.session.CookieConfig">
         <property name="domain" value=""/>
